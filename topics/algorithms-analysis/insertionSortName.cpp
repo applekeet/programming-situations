@@ -1,5 +1,5 @@
 #include <iostream>
-#include <conio.h>  // remove this line when compiling with g++  or  C++ compiler
+// #include <conio.h>  // remove this line when compiling with g++  or  C++ compiler
 using namespace std;
 
 int main()
@@ -11,15 +11,14 @@ int main()
 
 
     while(ch!='\n')
-        {
-            ch=getwchar();
-        name[i]=ch;
-        i++;
-        }
-        n=i-1;
-//      n = name.length();
-      name[i]='\0';
-      int j,key,k, comparison=0, compare=0;
+	{
+		ch=getwchar();
+		name[i]=ch;
+		i++;
+	}
+	n=i-1;   //      n = name.length();
+	name[i]='\0';
+	int j,key,k, comparison=0, compare=0;
 	for (j = 1; j < n; j++)
 	{
 		key = name[j];
@@ -31,7 +30,7 @@ int main()
 			comparison++;
 		}
 		if(key >= name[k])
-            		compare++;
+        compare++;
 		name[k + 1] = key;
 	}
 
