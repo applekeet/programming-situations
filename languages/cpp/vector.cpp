@@ -9,8 +9,6 @@ int main()
 {
     int input=1;
     vector<int> values;
-
-    deque<int> doubleEnd;
     
     while(input)
     {
