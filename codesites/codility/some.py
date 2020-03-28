@@ -30,7 +30,6 @@ def solution(H):
         maxB2left = max(H[:marker[0]]) * len(H[:marker[0]])
     if marker[-1] != (totalbuilding-1):
         maxB2right = max(H[marker[-1]+1:]) * len(H[marker[-1]+1:])
-        
     if marker[0] == 0 or marker[-1] == (totalbuilding-1):
         print(True)
         finalArea = finalArea + maxB2left + maxB2right
