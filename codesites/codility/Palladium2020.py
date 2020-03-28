@@ -1,6 +1,6 @@
 # https://app.codility.com/c/run/cert5PTJNT-MEY83Z3BRN8CMEYY/
 
-H = [45,46,47,48,49,50]
+H = [1,2,3,4,5,6]
 
 
 # you can write to stdout for debugging purposes, e.g.
@@ -24,17 +24,23 @@ def solution(H):
     maxB2left = 0
     maxB2right = 0
 
-    print(finalArea, H[marker[-1]+1:])
+    print(finalArea, H[marker[-1]+1:], H[:marker[0]])
 
+    # check start and end cases
+    if marker[0] == 0:
+        area = dpSol(H[marker[-1]+1:], H[marker[-1]:], maxB)
+        return (finalArea + area) - maxB
+    if marker[-1] == (totalbuilding-1):
+        area = dpSol(H[:marker[0]], H[:marker[0]+1], maxB)
+        return (finalArea + area) - maxB
+
+    # case where central section is box like structure; left and right both have some buildings
     if marker[0] != 0:
         maxB2left = max(H[:marker[0]]) * len(H[:marker[0]])
     if marker[-1] != (totalbuilding-1):
         maxB2right = max(H[marker[-1]+1:]) * len(H[marker[-1]+1:])
-    if marker[0] == 0 or marker[-1] == (totalbuilding-1):
-        print(True)
-        finalArea = finalArea + maxB2left + maxB2right
-        return finalArea
 
+    # chosing area, to the left or to the right of the box like structure
     if maxB2left <= maxB2right:
         area = maxB * len(H[marker[-1]+1:])
         area2 = maxB2left
@@ -45,5 +51,15 @@ def solution(H):
     finalArea = finalArea + area + area2
     return finalArea
 
+def dpSol(l, full, maxB):
+    print(l, full, maxB)
+    maxSubset = max(l)
+    subsetNumber = len(full)
+    possibleSolutions = []
+    # now we make two sections and check their height
+    for i in range(1, subsetNumber):
+        sol = (maxSubset * i) + (maxB * (subsetNumber-i))
+        possibleSolutions.append(sol)
+    return min(possibleSolutions)
 
 print(solution(H))
