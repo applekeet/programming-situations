@@ -1,2 +1,2 @@
 # programming-situations
-consists of many company questions.
+programming situations that I came across in interviews/websites/academics.
