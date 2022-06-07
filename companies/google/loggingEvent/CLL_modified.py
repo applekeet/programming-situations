@@ -19,6 +19,7 @@ class CircularLinkedList:
 
     def __init__(self):
         self.head = None
+        self.write_flag = False
 
     def insert(self, value):
         if self.head is None:
@@ -58,8 +59,23 @@ class CircularLinkedList:
         next_node = self.head.nxt
         self.head = next_node
 
-    def write_at_head(self, value):
-        self.head.value = value
+    ### event related funtions below this point
+
+    def event_called(self):
+        self.write_flag = True
+
+    def write_at_head_per_second(self):
+        starttime = time()
+        print(starttime)
+        while True:
+            if write_flag:
+                self.head.value = 1
+                write_flag = False
+            else:
+                self.head.value = 0
+            self.move_head()
+            # print("tick", time())
+            sleep(1.0 - ((time() - starttime) % 1.0))
 
     def events_last_hour(self):
         current = self.head
