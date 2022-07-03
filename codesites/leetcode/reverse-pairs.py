@@ -1,28 +1,15 @@
 
 ## https://leetcode.com/problems/reverse-pairs/
 
+
 class Solution:
-    def reversePairs(nums) -> int:
-        
-        new2 = []
-        lineee = len(nums)-1
-        
-        for i in nums:
-            new2.append(2*i)
-        
-        dude=0
-        print(new2)
-        
-        for count, i2 in enumerate(reversed(new2)):
-        	print("head is me..", count, lineee, lineee-count)
-        	for qq in range((lineee-count-1), 0):
-        		print("head is2 me..")
-        		print(i2, nums[qq])
-        		if(i2 < nums[qq]):
-        			dude+=1
-        return dude
-
-lit = [1,3,2,3,1]
-
-print(Solution.reversePairs(lit))
+    def reversePairs(self, nums: List[int]) -> int:
+        len_nums = len(nums)
+        count = 0
+        for x in range(len_nums - 1, -1, -1):
+            # print(nums[x], x)
+            for y in range(x - 1, -1, -1):
+                if nums[y] > 2 * nums[x]:
+                    count = count + 1
+        return count
 
