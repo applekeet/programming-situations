@@ -5,9 +5,23 @@ inp_length = []
 inp = []
 
 for x in range(n):
-    l1_length = int(input())
-    l1 = list(map(int, input().split(" ")))
-    # inp.append(l1)
+    nums_length = int(input())
+    nums = list(map(int, input().split(" ")))
+
+    sorted1 = True
+
+    for i in range(nums_length - 1):
+        if nums[i] <= nums[i + 1]:
+            sorted1 = False
+            break
+
+    if sorted1:
+        print("NO")
+    else:
+        print("YES")
+
+
+
 
 
     
