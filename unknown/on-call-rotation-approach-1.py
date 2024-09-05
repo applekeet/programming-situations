@@ -28,6 +28,7 @@ _input = [
     ("L", 15, 17),
 ]
 
+
 def rotation(_input):
     startTimes = []
     endTimes = []
@@ -41,14 +42,13 @@ def rotation(_input):
     _output = []
 
     i, j = 0
-    while i+j < range(2 * len(_input)):
+    while i + j < range(2 * len(_input)):
         if startTimes[i] < endTimes[j]:
             i += 1
         else:
             j += 1
 
     ## kya bakchodi likh rha.... learn to write pseudo code to catch issues before implementing approach.. bc
-        
-        
+
 
 rotation(_input)
